@@ -1,46 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
-    );
-  }
+      home: SupershuaifengCard(),
+    ),
+  );
 }
 
+class SupershuaifengCard extends StatelessWidget {
+  const SupershuaifengCard({super.key});
 
-class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'My first app',
-            style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
-          ),
-          backgroundColor: Color(0xFF151026),
-          centerTitle: true,
+      backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        title: const Text(
+          'Supershuaifeng ID Card',
+          style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
         ),
-        body: Center(
-          child: NetworkImage()
+        backgroundColor: Colors.grey[800],
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/profile.jpeg'),
+                radius: 40,
+              ),
+            ),
+
+            Divider(
+              height: 90,
+              color: Colors.grey[800],
+            ),
+
+            const Text(
+              'NAME', 
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            const SizedBox(height: 1),
+            Text(
+              'Supershuaifeng', 
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 30),
+            
+            const Text(
+              'CURRENT SUPERSHUAI LEVEL', 
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            const SizedBox(height: 1),
+            Text(
+              'Max', 
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey[400],
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  'supershauifeng@gmail.com',
+                  style: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 18,
+                    letterSpacing: 1,
+                  )
+                ),
+              ],
+            ),
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Text(
-            "click",
-            style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
-          ),
-          backgroundColor: Colors.red[600],
-        ),
-      );
+      )
+    );
   }
 }
