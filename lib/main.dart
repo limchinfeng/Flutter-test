@@ -1,52 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'quote.dart';
-import 'quote-card.dart';
+import 'package:flutter_application_1/time-app/pages/choose-location.dart';
+import 'time-app/pages/home.dart';
+import 'time-app/pages/loading.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: QuoteList(),
+      initialRoute: "/home",
+      routes: {
+        '/': (context) => Loading(),
+        '/home': (context) => Home(),
+        '/location': (context) => ChooseLocation()
+      },
     ),
   );
 }
 
-class QuoteList extends StatefulWidget {
-  const QuoteList({super.key});
-
-  @override
-  State<QuoteList> createState() => _QuoteListState();
-}
-
-class _QuoteListState extends State<QuoteList> {
-  List<Quote> quotes = [
-    Quote(author: 'supershuaifeng', text: 'this is the sample quote'),
-    Quote(author: 'Harry Porter', text: 'this is the sample quote 1'),
-    Quote(author: 'my little pony hehe', text: 'Go chase her !'),
-  ];
-
-  List<String> authors = ['author 1'];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text('Awesome Quotes'),
-        centerTitle: true,
-        backgroundColor: Colors.redAccent,
-      ),
-      body: Column(
-        children: quotes.map((quote) => QuoteCard(
-          quote: quote,
-          delete: () {
-            setState(() {
-              quotes.remove(quote);
-            });
-          }
-        )).toList(),
-      ),
-    );
-  }
-}
