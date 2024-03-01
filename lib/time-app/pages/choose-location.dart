@@ -8,6 +8,8 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,10 @@ class _ChooseLocationState extends State<ChooseLocation> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Text('Choose location screen')
+      body: ElevatedButton(
+        onPressed: () {},
+        child: Text('counter'),
+      )
     );
   }
 }
