@@ -1,108 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'quote.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SupershuaifengCard(),
+      home: QuoteList(),
     ),
   );
 }
 
-class SupershuaifengCard extends StatelessWidget {
-  const SupershuaifengCard({super.key});
+class QuoteList extends StatefulWidget {
+  const QuoteList({super.key});
+
+  @override
+  State<QuoteList> createState() => _QuoteListState();
+}
+
+class _QuoteListState extends State<QuoteList> {
+  List<Quote> quotes = [
+    Quote(author: 'supershuaifeng', text: 'this is the sample quote'),
+    Quote(author: 'Harry Porter', text: 'this is the sample quote 1'),
+    Quote(author: 'my little pony', text: 'Go chase her '),
+  ];
+
+  List<String> authors = ['author 1'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: const Text(
-          'Supershuaifeng ID Card',
-          style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
-        ),
-        backgroundColor: Colors.grey[800],
+        title: Text('Awesome Quotes'),
         centerTitle: true,
+        backgroundColor: Colors.redAccent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/profile.jpeg'),
-                radius: 40,
-              ),
-            ),
-
-            Divider(
-              height: 90,
-              color: Colors.grey[800],
-            ),
-
-            const Text(
-              'NAME', 
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            const SizedBox(height: 1),
-            Text(
-              'Supershuaifeng', 
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 30),
-            
-            const Text(
-              'CURRENT SUPERSHUAI LEVEL', 
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            const SizedBox(height: 1),
-            Text(
-              'Max', 
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 30),
-
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  'supershauifeng@gmail.com',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18,
-                    letterSpacing: 1,
-                  )
-                ),
-              ],
-            ),
-          ],
-        ),
-      )
+      body: Column(
+        children: quotes.map((quote) => Text('${quote.text} - ${quote.author}')).toList(),
+      ),
     );
   }
 }
